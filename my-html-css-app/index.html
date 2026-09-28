@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+    <meta charset="UTF-8" />
+    <title>My little calculator</title>
+    <link rel="stylesheet" href="style.css" />
+   </head>
+  <body>
+    <input type="text" id="number"/>
+    <h2 id="info" class="big" title="Info about the number">
+        Information about the number
+    </h2>
+    <button onclick="appendNumber('1')">1</button>
+    <button onclick="appendNumber('2')">2</button>
+    <button onclick="appendNumber('3')">3</button>
+    <button onclick="appendNumber('4')">4</button>
+    <button onclick="appendNumber('5')">5</button>
+    <button onclick="appendNumber('6')">6</button>
+    <button onclick="appendNumber('7')">7</button>
+    <button onclick="appendNumber('8')">8</button>
+    <button onclick="appendNumber('9')">9</button>
+    <button onclick="appendNumber('0')">0</button>
+    <button onclick="appendNumber(',')">,</button>
+    <button onclick="appendNumber('.')">.</button>
+    <button onclick="appendNumber('-')">-</button>
+    <button id="addition" onclick="addition()">+</button>
+    <button id="multiplication" onclick="multiplication()">x</button>
+    <button onclick="divide()">/</button>
+    <button id="equal" onclick="eq()">=</button>
+    <button id="modulo" onclick="mod()">mod()</button>
+    <button id="factorial" onclick="fact()">fact()</button>
+    <button onclick="squareRoot()">√</button>
+    <button id="square" onclick="square()">²</button>
+    <button onclick="exponentiation()">x²</button>
+    <button id="sum" onclick="sum()">sum()</button>
+    <button onclick="sort()">sort()</button>
+    <button onclick="reverse()">reverse()</button>
+    <button onclick="removelast()">removelast()</button>
+    <script type="text/javascript">
+     function appendNumber(num) {
+            let inputField = document.getElementById("number");
+            inputField.value = inputField.value + num;
+        }
+
+     function fill_info() {
+            let inputField = document.getElementById("number");
+            let infoField = document.getElementById("info");
+            let result = +inputField.value;
+
+            if (result < 100) {
+                infoField.innerHTML = "Info: The result is less than 100";
+            } else if (result >= 100 && result <= 200) {
+                infoField.innerHTML = "Info: The result is between 100 and 200";
+            } else {
+                infoField.innerHTML = "Info: The result is greater than 200";
+            }
+        }
+     function square() {
+            let inputField = document.getElementById("number");
+            let result = +inputField.value;
+            inputField.value = result * result;
+            fill_info();
+        }
+    function mod() {
+            let inputField = document.getElementById("number");
+            let result = +inputField.value;
+            inputField.value = result % 2;
+            fill_info();
+        }
+    </script>
+</body>
+</html>

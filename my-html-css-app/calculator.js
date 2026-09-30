@@ -115,7 +115,7 @@ let operator ;
             let inputField = document.getElementById("number");
             if(!validate("single")) {return; }
             let x = +inputField.value;
-            inputField.value = x ** 2;
+            inputField.value = x ** x;
             fill_info();
         }
     function sum() {

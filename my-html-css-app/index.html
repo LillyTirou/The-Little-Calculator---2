@@ -63,6 +63,16 @@
             inputField.value = result * result;
             fill_info();
         }
+    function squareRoot() {
+            let inputField = document.getElementById("number");
+            let result = +inputField.value;
+                if (result < 0) {
+                    inputField.value = "Error: Square root of negative number is undefined";
+                } else {
+                    inputField.value = Math.sqrt(result);
+                }
+                fill_info();
+        }
     function mod() {
             let inputField = document.getElementById("number");
             let result = +inputField.value;
@@ -123,7 +133,7 @@
             let arr = inputField.value.split(",");
             let total = 0;
             for (let i = 0; i < arr.length; i++) {
-total = total + +arr[i];
+            total = total + +arr[i];
             }
             inputField.value = total;
             fill_info();
@@ -146,7 +156,13 @@ total = total + +arr[i];
             arr.pop();
             inputField.value = arr.join(",");
         }
-    fun
+    function addition() {
+            let inputField = document.getElementById("number");
+            first_number = +inputField.value;
+            operator = "addition";
+            inputField.value = "";
+        }
+    function validate
     </script>
 </body>
 </html>

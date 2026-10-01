@@ -1,5 +1,15 @@
 let first_number ;
 let operator ;
+let active_input = "number";
+document.addEventListener("DOMContentLoaded", function () {
+    let inputField = document.getElementById("number");
+    let expField = document.getElementById("exponent_input");
+    let remField = document.getElementById("remove_input");
+
+    if (inputField) inputField.addEventListener("focus", function () { active_input = "number"; });
+    if (expField) expField.addEventListener("focus", function () { active_input = "exponent_input"; });
+    if (remField) remField.addEventListener("focus", function () { active_input = "remove_input"; });
+});
     function validate(type) {
         let inputField = document.getElementById("number");
         let value = inputField.value;
@@ -21,11 +31,26 @@ let operator ;
 
         return true;
         }
-    function appendNumber(num) {
+    function allClear() {
             let inputField = document.getElementById("number");
-            inputField.value = inputField.value + num;
+            let infoField = document.getElementById("info");
+            let extraField = document.getElementById("exponent_input");
+            let removeField = document.getElementById("remove_input");
+            inputField.value = "";
+            infoField.innerHTML = "Info: ";
+            if (extraField) {
+                extraField.value = "";
+            }
+            if (removeField) {
+                removeField.value = "";
+            }
         }
-
+    function appendNumber(num) {
+            let targetField = document.getElementById(active_input);
+            if (targetField) {
+                targetField.value += num;
+            }
+        }
     function fill_info() {
             let inputField = document.getElementById("number");
             let infoField = document.getElementById("info");
@@ -111,13 +136,6 @@ let operator ;
             inputField.value = result;
             fill_info();
         }
-    function exponentiation() {
-            let inputField = document.getElementById("number");
-            if(!validate("single")) {return; }
-            let x = +inputField.value;
-            inputField.value = x ** x;
-            fill_info();
-        }
     function sum() {
             let inputField = document.getElementById("number");
             if(!validate("csv")) {return; }
@@ -129,11 +147,11 @@ let operator ;
             inputField.value = total;
             fill_info();
         }
-    function sort() {
+    function sortCSV() {
             let inputField = document.getElementById("number");
             if(!validate("csv")) {return; }
             let arr = inputField.value.split(",");
-            arr.sort() ;
+            arr.sort((a,b) => a - b);
             inputField.value = arr.join(",");
         }
     function reverse() {
@@ -143,12 +161,18 @@ let operator ;
             arr.reverse();
             inputField.value = arr.join(",");
         }
-    function removelast() {
+    function exponentiation() {
             let inputField = document.getElementById("number");
-            if(!validate("csv")) {return; }
-            let arr = inputField.value.split(",");
-            arr.pop();
-            inputField.value = arr.join(",");
+            if(!validate("single")) { return; }
+            let extraField = document.getElementById("exponent_input");
+            if (extraField.value === "") {
+            inputField.value = "Error: Enter exponent in extra input";
+            return;
+    }
+            let base = +inputField.value;
+            let exp = +extraField.value;
+            inputField.value = Math.pow(base, exp);
+            fill_info();
         }
     function addition() {
             let inputField = document.getElementById("number");
@@ -157,3 +181,18 @@ let operator ;
             operator = "addition";
             inputField.value = "";
         }
+    function removelast() {
+            let inputField = document.getElementById("number");
+            if (!validate("csv")) { return; }
+            let extraField = document.getElementById("remove_input");
+            let arr = inputField.value.split(",");
+            let count = 1;
+            if (extraField && extraField.value !== "") {
+            count = parseInt(extraField.value);
+    }
+
+        for (let i = 0; i < count; i++) {
+        arr.pop();
+    }
+        inputField.value = arr.join(",");
+}

@@ -2,15 +2,16 @@
 <html lang="en">
    <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>My little calculator</title>
     <link rel="stylesheet" href="styles.css" />
    </head>
   <body>
     <div class ="calculator">
-    <input type="text" id="number" placeholder="Primary input" />
+    <input type="text" id="number"/>
     <div class="extra-inputs">
-    <input type="number" id="exponent_input" placeholder="Exponent input" />
-    <input type="number" id="remove_input" placeholder="Remove count" />
+    <input type="text" id="exponent_input" value="Exponent" onclick="clearExponentField()"/>
+    <input type="text" id="remove_input" value="Remove count" onclick="clearRemoveField()"/>
     </div>
     <h2 id="info" class="big" title="Info about the number">
         Information about the number

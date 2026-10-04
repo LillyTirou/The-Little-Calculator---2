@@ -13,7 +13,6 @@ document.addEventListener("DOMContentLoaded", function () {
     function validate(type) {
         let inputField = document.getElementById("number");
         let value = inputField.value;
-
         if (value === "") {
         inputField.value = "Error: empty input";
         return false;
@@ -28,7 +27,6 @@ document.addEventListener("DOMContentLoaded", function () {
                     }
                 }
             }
-
         return true;
         }
     function allClear() {
@@ -87,7 +85,7 @@ document.addEventListener("DOMContentLoaded", function () {
             if(!validate("single")) {return; }
             let result = +inputField.value;
             if (result < 0) {
-               result = -result;
+                result = -result;
             }
             inputField.value = result;
             fill_info();
@@ -171,7 +169,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
             let base = +inputField.value;
             let exp = +extraField.value;
-            inputField.value = Math.pow(base, exp);
+            inputField.value = base ** exp;
             fill_info();
         }
     function addition() {
@@ -195,4 +193,13 @@ document.addEventListener("DOMContentLoaded", function () {
         arr.pop();
     }
         inputField.value = arr.join(",");
-}
+        }
+    function clearExponentField() {
+            let inputField = document.getElementById("exponent_input");
+            inputField.value = "";
+        }
+
+    function clearRemoveField() {
+            let inputField = document.getElementById("remove_input");
+            inputField.value = "";
+        }

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My little calculator</title>
+    <link rel="stylesheet" href="styles.css" />
+   </head>
+  <body>
+    <div class ="calculator">
+    <input type="text" id="number"/>
+    <div class="extra-inputs">
+    <input type="text" id="exponent_input" value="Exponent" onclick="clearExponentField()"/>
+    <input type="text" id="remove_input" value="Remove count" onclick="clearRemoveField()"/>
+    </div>
+    <h2 id="info" class="big" title="Info about the number">
+        Information about the number
+    </h2>
+    <div class="buttons">
+    <button onclick="appendNumber('1')">1</button>
+    <button onclick="appendNumber('2')">2</button>
+    <button onclick="appendNumber('3')">3</button>
+    <button onclick="appendNumber('4')">4</button>
+    <button onclick="appendNumber('5')">5</button>
+    <button onclick="appendNumber('6')">6</button>
+    <button onclick="appendNumber('7')">7</button>
+    <button onclick="appendNumber('8')">8</button>
+    <button onclick="appendNumber('9')">9</button>
+    <button onclick="appendNumber('0')">0</button>
+    <button onclick="appendNumber(',')">,</button>
+    <button onclick="appendNumber('.')">.</button>
+    <button onclick="appendNumber('-')">-</button>
+    <button id="ac" onclick="allClear()">AC</button>
+    </div>
+    <div class="operations">   
+    <button id="addition" onclick="addition()">+</button>
+    <button id="multiplication" onclick="multiplication()">x</button>
+    <button onclick="divide()">/</button>
+    <button id="equal" onclick="eq()">=</button>
+    </div>
+    <div class="operations">
+    <button id="modulo" onclick="mod()">mod()</button>
+    <button id="factorial" onclick="fact()">fact()</button>
+    <button onclick="squareRoot()">√</button>
+    <button id="square" onclick="square()">x²</button>
+    </div>
+    <div class="operations">
+    <button onclick="exponentiation()">x<sup>y</sup></button>
+    <button id="sum" onclick="sum()">sum()</button>
+    <button onclick="sortCSV()">sort()</button>
+    <button onclick="reverse()">reverse()</button>
+    <button onclick="removelast()">removelast()</button>
+    <button onclick="average()">average()</button>
+    </div>
+    </div>
+    <script src="calculator.js"></script>
+</body>
+</html>

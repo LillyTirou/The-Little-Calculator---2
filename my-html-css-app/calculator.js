@@ -62,14 +62,14 @@ document.addEventListener("DOMContentLoaded", function () {
                 infoField.innerHTML = "Info: The result is greater than 200";
             }
         }
-    function square() {
+    const square = () => {
             let inputField = document.getElementById("number");
             if(!validate("single")) {return; }
             let result = +inputField.value;
             inputField.value = result * result;
             fill_info();
         }
-    function squareRoot() {
+    const squareRoot = () => {
             let inputField = document.getElementById("number");
             if(!validate("single")) {return; }
             let result = +inputField.value;
@@ -80,7 +80,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
                 fill_info();
         }
-    function mod() {
+    const mod = () => {
             let inputField = document.getElementById("number");
             if(!validate("single")) {return; }
             let result = +inputField.value;
@@ -90,7 +90,7 @@ document.addEventListener("DOMContentLoaded", function () {
             inputField.value = result;
             fill_info();
         }
-    function fact() {
+    const fact = () => {
             let inputField = document.getElementById("number");
             if(!validate("single")) {return; }
             let x = +inputField.value;
@@ -151,6 +151,7 @@ document.addEventListener("DOMContentLoaded", function () {
             let arr = inputField.value.split(",");
             arr.sort((a,b) => a - b);
             inputField.value = arr.join(",");
+            document.getElementById("info").innerHTML = "Info: List of values processed.";
         }
     function reverse() {
             let inputField = document.getElementById("number");
@@ -158,6 +159,7 @@ document.addEventListener("DOMContentLoaded", function () {
             let arr = inputField.value.split(",");
             arr.reverse();
             inputField.value = arr.join(",");
+            document.getElementById("info").innerHTML = "Info: List of values processed";
         }
     function exponentiation() {
             let inputField = document.getElementById("number");
@@ -193,6 +195,19 @@ document.addEventListener("DOMContentLoaded", function () {
         arr.pop();
     }
         inputField.value = arr.join(",");
+        document.getElementById("info").innerHTML = "Info: List of values processed";
+        }
+    function average() {
+            let inputField = document.getElementById("number");
+            if(!validate("csv")) {return; }
+            let arr = inputField.value.split(",");
+            let total = 0;
+            for (let i = 0; i < arr.length; i++) {
+            total = total + +arr[i];
+            }
+            let avg = total / arr.length;
+            inputField.value = avg;
+            fill_info();
         }
     function clearExponentField() {
             let inputField = document.getElementById("exponent_input");
